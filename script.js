@@ -345,6 +345,78 @@ document.addEventListener('DOMContentLoaded', () => {
       if (chatbotWindow) chatbotWindow.classList.remove('active');
     }
   });
+
+  // 16. Stat Counter Animation on Scroll (IntersectionObserver)
+  const metricVals = document.querySelectorAll('.metric-val[data-target]');
+  if ('IntersectionObserver' in window && metricVals.length > 0) {
+    let countersAnimated = false;
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !countersAnimated) {
+          countersAnimated = true;
+          metricVals.forEach(valEl => {
+            const target = parseFloat(valEl.getAttribute('data-target'));
+            const suffix = valEl.getAttribute('data-suffix') || '';
+            const prefix = valEl.getAttribute('data-prefix') || '';
+            const decimals = parseInt(valEl.getAttribute('data-decimals') || '0', 10);
+            const duration = 1400;
+            const startTime = performance.now();
+
+            function updateCounter(currentTime) {
+              const elapsed = currentTime - startTime;
+              const progress = Math.min(elapsed / duration, 1);
+              // easeOutQuart
+              const easeProgress = 1 - Math.pow(1 - progress, 4);
+              const currentVal = target * easeProgress;
+
+              if (decimals > 0) {
+                valEl.textContent = prefix + currentVal.toFixed(decimals) + suffix;
+              } else {
+                valEl.textContent = prefix + Math.round(currentVal).toLocaleString('en-IN') + suffix;
+              }
+
+              if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+              }
+            }
+            requestAnimationFrame(updateCounter);
+          });
+        }
+      });
+    }, { threshold: 0.25 });
+
+    const metricsStrip = document.querySelector('.metrics-strip');
+    if (metricsStrip) counterObserver.observe(metricsStrip);
+  }
+
+  // 17. Smooth Scroll for Internal Nav Links with Sticky Header Offset
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#' || targetId === '') return;
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        e.preventDefault();
+        const headerOffset = 70;
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+
+        // Close mobile drawer if open
+        if (mobileDrawer && mobileDrawer.classList.contains('open')) {
+          mobileDrawer.classList.remove('open');
+          if (menuOpenIcon && menuCloseIcon) {
+            menuOpenIcon.classList.remove('hidden');
+            menuCloseIcon.classList.add('hidden');
+          }
+        }
+      }
+    });
+  });
 });
 
 // Global Function: Filter Properties
