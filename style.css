@@ -528,21 +528,23 @@ button {
 }
 
 .hero-title {
-  font-size: clamp(2.2rem, 3.8vw, 3.6rem);
+  font-size: clamp(1.75rem, 3vw, 2.85rem);
   font-weight: 800;
-  line-height: 1.35;
-  letter-spacing: 0;
-  word-spacing: 0.16em;
-  max-width: 960px;
-  margin-bottom: 20px;
-  text-wrap: balance;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  word-spacing: normal;
+  max-width: 1050px;
+  margin: 0 auto 16px auto;
+  text-align: center;
 }
 
-.hero-title .gradient-text {
-  display: inline-block;
-  margin-top: 8px;
-  word-spacing: 0.18em;
-  letter-spacing: 0.01em;
+.hero-title .title-line {
+  display: block;
+  white-space: nowrap;
+}
+
+.hero-title .title-line.gradient-text {
+  margin-top: 5px;
 }
 
 .hero-subtitle {
@@ -2698,9 +2700,12 @@ button {
     padding: 40px 0 60px 0;
   }
   .hero-title {
-    font-size: clamp(1.85rem, 6.5vw, 2.3rem);
-    line-height: 1.32;
-    word-spacing: 0.12em;
+    font-size: clamp(1.55rem, 5.6vw, 2.1rem);
+    line-height: 1.28;
+    word-spacing: normal;
+  }
+  .hero-title .title-line {
+    white-space: normal;
   }
   .search-fields-grid {
     grid-template-columns: 1fr;
