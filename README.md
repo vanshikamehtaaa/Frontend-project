@@ -1,86 +1,197 @@
-# PropCapital.ai — High-Tech Dark Obsidian Frontend Redesign
+# PropCapital.ai — React Frontend Application
 
-> **Frontend Technical Round Assignment Submission**  
-> **Candidate:** Vanshika Mehta  
-> **Live Site Being Redesigned:** [PropCapital.ai](https://www.propcapital.ai) (NCR's AI Real Estate Platform)  
-> **Tech Stack:** Semantic HTML5, Modern CSS3 (Grid/Flexbox/CSS Variables), Vanilla JavaScript (ES6)
-
----
-
-## 💎 Design System & Aesthetic Overview
-
-This redesign transforms PropCapital.ai into a world-class, futuristic, Silicon Valley-grade real estate tech ecosystem (inspired by Linear, Vercel, and Raycast):
-
-- **Theme Palette:** **Premium Dark Obsidian & Midnight Slate** (`#07090e`, `#0e131d`, `#141b27`) — eliminating muddy greens for a razor-sharp, ultra-modern SaaS feel.
-- **Electric Accents:** **Neon Electric Cyan** (`#00f2fe`) for primary CTAs and interactive highlights, paired with **Electric Mint** (`#00e599`) for verified badges.
-- **Typography:** Google Fonts `Plus Jakarta Sans` for clean, geometric luxury reading.
-- **Glassmorphism & Micro-Interactions:** Subtle translucent borders (`rgba(255, 255, 255, 0.08)`), glowing radial mesh lights, smooth card elevations, and hover transitions.
+Frontend Technical Assignment Submission  
+Project: PropCapital.ai (NCR AI-Powered Real Estate Platform)  
+Architecture: React.js Component-Based Architecture with Vite  
+Styling: Custom Vanilla CSS3  
 
 ---
 
-## 🔍 Audit of Original Website (Bugs Fixed)
+## 1. Project Overview
 
-| # | Existing Site Flaw | Problem Caused | Redesign Solution |
-|---|---|---|---|
-| 1 | **Muddy, Heavy Green Backgrounds** | Looked cluttered, oppressive, and visually tiring. | Replaced with **Deep Obsidian Black & Charcoal Slate** with plenty of breathing space. |
-| 2 | **Overcrowded Desktop Navbar** | 10+ nav items jammed horizontally causing visual collisions on 13-inch displays. | Streamlined into a **Glassmorphic Floating Navbar** with 5 high-intent links + City Selector + 1 clear primary CTA. |
-| 3 | **Ambiguous Hero Search Bar** | Only an empty input with generic "Ask PropCapital" text and no quick filter presets. | Added a **Sleek Tabbed Omnibar** (`Buy`, `Rent`, `Commercial`, `AI Smart Match`) with preset BHK/Budget filters and trending tags. |
-| 4 | **Low Text Contrast & 10px Fonts** | Extremely small fonts (`text-[10px]`) with low opacity failing WCAG 2.1 AA accessibility. | Standardized base typography to **14px minimum**, using crisp high-contrast white and cyan on dark surfaces. |
-| 5 | **Heavy Dark Gradients on Photos** | Dark overlays covered photos, making luxury properties look unappealing. | Designed **Razor-sharp Dark Card Surfaces** (`#0f1622`) with prominent HD image headers, verified badges, and transparent specs. |
-| 6 | **No Real-Time Financial Tools** | Users were forced to navigate off the homepage to access calculators. | Embedded an **Interactive Real-Time EMI Calculator** directly on the landing page with instant Rupee formatting. |
+This project represents the upgrade and migration of the PropCapital.ai landing page from a vanilla HTML/CSS/JavaScript structure into a modular, production-ready React.js application.
 
----
+The migration strictly preserves the visual identity, dark obsidian aesthetic, color palette, typography, responsive layouts, and content of the original website, while establishing clean state management, reusable component abstractions, and complete interactive functionality for every button, modal, drawer, filter, and calculator.
 
-## 🚀 Key Sections & Features
-
-1. **Sticky Glassmorphic Navbar**: Logo with glowing cyan badge, city selector dropdown (Gurugram / Noida / Faridabad), and instant "List Property Free" CTA.
-2. **Hero Section with Omnibar**:
-   - High-impact headline: *"The Future of NCR Real Estate. Powered by AI Precision."*
-   - Mode switching between Buy, Rent, Commercial, and AI Matchmaker modes.
-   - Quick trending search pills with 1-click autofill.
-3. **Trust Metrics Strip**: 12,000+ verified homes, ₹0 brokerage, 186+ builders, < 2 hr response time.
-4. **Prime NCR Corridors**: Dedicated architectural cards for Gurugram, Noida, and Faridabad.
-5. **Featured Properties with Dynamic Filtering**:
-   - Filter tabs: `All Properties`, `Gurugram`, `Noida`, `Faridabad`.
-   - Real-time card switching without page reloads.
-6. **PropCapital AI "Smart Match" Spotlight**:
-   - Interactive preview of **IRA (AI Real Estate Advisor)** with a live terminal UI finding a 98.6% match in seconds.
-7. **NRI Investment Hub**: Special differentiator addressing the 450+ NRIs served with virtual walkthroughs & FEMA support.
-8. **Interactive EMI & Loan Calculator**:
-   - Live range sliders for Loan Amount, Interest Rate, and Tenure.
-   - Dynamic real-time calculation of Monthly EMI, Total Interest, and Total Payable in Indian Currency format (`₹ 1,30,172`).
-9. **Seller Callout Banner**: High-contrast banner offering ₹0 listing fee and 4K photography.
-10. **Modern Footer**: RERA registration numbers (`HARERA-PKL-GGM-2023-PC`), legal links, and social channels.
-11. **Inquiry / Lead Capture Modal**: Clean dialog for booking free site visits.
+### Core Design Tokens Retained:
+- Background Palette: Dark Obsidian (`#07090e`, `#0e131d`, `#141b27`)
+- Primary Accent: Electric Cyan (`#00f2fe`) and Cyan Button Gradient (`linear-gradient(135deg, #00f2fe 0%, #4facfe 100%)`)
+- Trust Markers: Emerald Green (`#00e599`) for RERA verified tags
+- Typography: Plus Jakarta Sans via Google Fonts
+- Surface Glassmorphism: `backdrop-filter: blur(18px)` with translucent borders (`rgba(0, 242, 254, 0.2)`)
 
 ---
 
-## 💻 How to Run Locally
+## 2. Technology Stack
 
-1. Open Terminal and navigate to the project directory:
+- React 18: Declarative component architecture, functional components, hooks (`useState`, `useMemo`, `useEffect`, `useRef`).
+- Vite 6: Fast modern frontend build tool and development server.
+- JavaScript ES6+: Modern ES modular syntax, array manipulation, and asynchronous operations.
+- HTML5: Accessible semantic structure (`header`, `nav`, `main`, `section`, `article`, `footer`, `dialog`).
+- Custom CSS3: Vanilla CSS with custom properties (CSS variables), Flexbox, CSS Grid, keyframe animations, and multi-tier responsive media queries.
+- Lucide React: Lightweight, tree-shakeable vector icons.
+- Decoupled JSON Dataset: Stored in `src/data/data.json` and mirrored in `public/data.json` for offline resilience.
+
+Strict Constraint Adherence:
+- No Tailwind CSS
+- No Bootstrap
+- No Next.js
+- No Vue / Angular
+- No Heavy UI Component Libraries (Material UI, Ant Design, Chakra UI)
+
+---
+
+## 3. Project Folder Structure
+
+```text
+Frontend/
+├── dist/                          # Compiled production build output
+│   ├── index.html
+│   └── assets/
+│       ├── index-*.css
+│       └── index-*.js
+├── public/                        # Static assets served at root
+│   └── data.json                  # Decoupled property dataset
+├── src/
+│   ├── components/                # Reusable React components
+│   │   ├── AIEngine.jsx           # IRA intelligence terminal simulation
+│   │   ├── AuthModal.jsx          # Client sign-in and consultation dialog
+│   │   ├── CTA.jsx                # Seller onboarding and 4K photo banner
+│   │   ├── EMICalculator.jsx      # Reactive home loan calculator
+│   │   ├── FAQ.jsx                # Accessible accordion with ARIA attributes
+│   │   ├── FloatingChatbot.jsx    # Interactive IRA assistant with quick prompts
+│   │   ├── Footer.jsx             # Obsidian footer with sitemap & socials
+│   │   ├── Hero.jsx               # Headline, Omnibar, and search filters
+│   │   ├── HowItWorks.jsx         # 4-step transaction process cards
+│   │   ├── Markets.jsx            # Gurugram, Noida, Faridabad market cards
+│   │   ├── Navbar.jsx             # Sticky glassmorphic nav with mobile drawer
+│   │   ├── NRIDesk.jsx            # NRI FEMA compliance & 4K tour showcase
+│   │   ├── Properties.jsx         # Curated listings grid with city pills
+│   │   ├── PropertyModal.jsx      # High-fidelity property detail dialog
+│   │   ├── Toast.jsx              # Floating status notification system
+│   │   └── TrustMetrics.jsx       # 5-column social proof counter strip
+│   ├── data/
+│   │   └── data.json              # Bundled dataset for fast local rendering
+│   ├── styles/
+│   │   └── style.css              # Custom design system and media queries
+│   ├── App.jsx                    # Root state coordinator and filter engine
+│   └── main.jsx                   # React 18 DOM mount entry point
+├── vanilla_backup/                # Original HTML/CSS/JS backup archive
+├── index.html                     # Root HTML template with Google Fonts
+├── package.json                   # Dependency definitions and scripts
+├── vite.config.js                 # Vite configuration
+└── README.md                      # Project documentation
+```
+
+---
+
+## 4. State Architecture and Component Data Flow
+
+The application follows unidirectional data flow managed at the `App.jsx` level:
+
+1. Search and Filter Engine (`App.jsx`):
+   - Maintains `filters` state (`location`, `type`, `budget`, `bhk`) and `activeCityFilter`.
+   - Uses `useMemo` to compute `filteredProperties` in real time without redundant recalculations.
+   - Omnibar inputs, quick trending pills, and city filter pills immediately update filtered listings.
+
+2. Interactive Overlays:
+   - `isAuthModalOpen`: Triggers the unified consultation / sign-in dialog.
+   - `selectedProperty`: Triggers the high-fidelity property detail dialog.
+   - `isChatbotOpen`: Controls the expanded IRA neural assistant widget.
+   - `toast`: Manages floating alerts for user feedback.
+
+3. Reactive Calculation (`EMICalculator.jsx`):
+   - Computes reducing balance compound interest from Loan Amount, Interest Rate, and Tenure sliders.
+   - Dynamically updates monthly EMI, principal amount, total interest payable, and total amount.
+
+---
+
+## 5. Functional Testing Report
+
+Every interactive button, link, form, modal, and drawer was tested in an automated headless Chrome environment via the Chrome DevTools Protocol (CDP):
+
+| Test Item | Expected Result | Status | Notes |
+| :--- | :--- | :--- | :--- |
+| React Application | Mounts cleanly in `#root` | Pass | React 18 hydration complete with 0 runtime errors |
+| Existing Design System | Obsidian and Cyan aesthetic preserved | Pass | Exact colors, glassmorphism, and fonts retained |
+| Navigation Links | Smooth scroll to corresponding sections | Pass | All 8 nav links navigate to valid section IDs |
+| City Selector Dropdown | Switches active city and filters properties | Pass | Gurugram, Noida, and Faridabad selections functional |
+| Mobile Navigation Drawer | Opens and closes smoothly on mobile screens | Pass | Hamburger toggle animated with clean backdrop |
+| Omnibar Search & Filter | Filters cards by query, type, budget, and BHK | Pass | "M3M" query isolated relevant listing in real time |
+| City Filter Pills | Filters cards by city category | Pass | "Noida" pill filtered 10 properties down to 3 |
+| Property Quick View Modal | Opens detail dialog with specifications | Pass | RERA details, amenities chips, and pricing display |
+| Property Book Visit Action | Triggers confirmation toast and closes modal | Pass | Confirmed with 2-hour advisor callback notice |
+| EMI Calculator Sliders | Reactively recalculates EMI on input | Pass | Adjusted from 1.5 Cr to 2.5 Cr with real-time update |
+| FAQ Accordion | Expands clicked item and collapses others | Pass | Correct `aria-expanded` and CSS max-height transitions |
+| Form Validation | Enforces 10-digit Indian phone regex | Pass | Invalid phone rejected; valid number accepted |
+| Floating AI Chatbot | Opens window, sends messages, replies via AI | Pass | Preset chips and custom input handled by IRA |
+| Desktop Responsiveness | No horizontal overflow (1024px, 1280px, 1440px) | Pass | Tested via automated viewport metrics |
+| Mobile Responsiveness | No horizontal overflow (375px, 390px, 430px, 768px) | Pass | Tested via automated viewport metrics |
+| Browser Console | Zero critical console errors or warnings | Pass | Checked via CDP `Runtime.consoleAPICalled` |
+| Production Build | Compiles bundle without errors | Pass | `vite build` completed in under 500ms |
+
+---
+
+## 6. Responsive Viewport Audit
+
+The application was tested across all required viewport widths to guarantee zero horizontal scroll (`scrollWidth === clientWidth`):
+
+| Viewport Width | Client Width | Scroll Width | Horizontal Overflow | Result |
+| :--- | :--- | :--- | :--- | :--- |
+| 375px | 375px | 375px | None | Pass |
+| 390px | 390px | 390px | None | Pass |
+| 430px | 430px | 430px | None | Pass |
+| 768px | 768px | 768px | None | Pass |
+| 1024px | 1024px | 1024px | None | Pass |
+| 1280px | 1280px | 1280px | None | Pass |
+| 1440px | 1440px | 1440px | None | Pass |
+
+---
+
+## 7. Installation and Local Development
+
+### Prerequisites:
+- Node.js (version 18.0.0 or higher)
+- npm (version 9.0.0 or higher)
+
+### Steps to Run Locally:
+
+1. Clone or extract the project directory:
    ```bash
-   cd /Users/vanshikamehta/Desktop/Frontend
+   cd Frontend
    ```
-2. Start the local HTTP server:
+
+2. Install dependencies:
    ```bash
-   python3 -m http.server 3000
+   npm install
    ```
-3. Open in your browser:
-   ```text
-   http://localhost:3000
+
+3. Start the local development server:
+   ```bash
+   npm run dev
+   ```
+   Open `http://localhost:5173` in your browser.
+
+4. Build for production:
+   ```bash
+   npm run build
+   ```
+   The production-optimized bundle will be generated in the `dist/` directory.
+
+5. Preview the production build locally:
+   ```bash
+   npm run preview
    ```
 
 ---
 
-## 🎯 Technical Interview Cheatsheet (Quick Q&A)
+## 8. Deployment Instructions
 
-### Q1: Why did you choose Vanilla HTML/CSS over a framework like React or Next.js?
-> *"For a high-performance landing page, pure semantic HTML5 and modern CSS offer zero bundle overhead, near-instant First Contentful Paint (FCP), and no hydration latency. Moreover, using CSS Custom Properties (Variables), Flexbox, and CSS Grid demonstrates a solid grasp of core web fundamentals without relying on framework abstractions."*
+### Vercel / Netlify:
+- Build Command: `npm run build`
+- Output Directory: `dist`
+- Install Command: `npm install`
+- Node Version: 18.x or 20.x
 
-### Q2: How did you implement responsiveness?
-> *"I used a Mobile-First and Adaptive CSS strategy. For card grids, I used CSS Grid with responsive columns (`repeat(3, 1fr)` on desktop, `repeat(2, 1fr)` on tablets, and `1fr` on mobile). For navigation, I implemented an accessible slide-down drawer triggered by a CSS/JS hamburger toggle."*
-
-### Q3: How does the EMI calculator work under the hood?
-> *"It listens to the `input` event on the range sliders in real time and applies the standard reducing-balance loan formula:  
-> $E = \frac{P \times r \times (1+r)^n}{(1+r)^n - 1}$  
-> where $r$ is the monthly interest rate and $n$ is the total months. The result is formatted in real time using `toLocaleString('en-IN')` to display authentic Indian numbering (Lakhs and Crores)."*
+### Static Hosting:
+The generated files in `dist/` can be served directly from any static web server (such as Nginx, Apache, AWS S3 + CloudFront, or GitHub Pages).
